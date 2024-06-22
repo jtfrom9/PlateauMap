@@ -1,11 +1,42 @@
 {
   "dependencies": {
+    "com.autodesk.fbx": {
+      "version": "4.1.2",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.synesthesias.plateau-unity-sdk": {
+      "version": "https://github.com/Project-PLATEAU/PLATEAU-SDK-for-Unity.git#v2.3.2",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.0.2",
+        "com.unity.shadergraph": "12.1.8",
+        "com.unity.formats.fbx": "4.1.2",
+        "com.unity.test-framework": "1.1.31"
+      },
+      "hash": "0f0914676e866dbcdc5bccaee8aec35fa8d4c338"
+    },
     "com.unity.burst": {
       "version": "1.8.11",
       "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.2.1"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.cloud.gltfast": {
+      "version": "5.0.4",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.mathematics": "1.2.6",
+        "com.unity.burst": "1.6.6"
       },
       "url": "https://packages.unity.com"
     },
@@ -21,6 +52,16 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.formats.fbx": {
+      "version": "4.1.3",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.timeline": "1.5.2",
+        "com.autodesk.fbx": "4.1.2"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
@@ -48,12 +89,42 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.inputsystem": {
+      "version": "1.7.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.uielements": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.mathematics": {
       "version": "1.2.6",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.plateautoolkit": {
+      "version": "https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity.git#v1.0.1",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.synesthesias.plateau-unity-sdk": "1.0.0",
+        "com.unity.splines": "2.2.0",
+        "com.unity.inputsystem": "1.5.1",
+        "com.unity.cloud.gltfast": "5.0.4",
+        "com.unity.visualeffectgraph": "12.1.10",
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      },
+      "hash": "de07076cbf24667feb6b844e6a8c5acf0ece2ba6"
     },
     "com.unity.render-pipelines.core": {
       "version": "12.1.14",
@@ -83,6 +154,13 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.settings-manager": {
+      "version": "1.0.3",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.shadergraph": {
       "version": "12.1.14",
       "depth": 1,
@@ -91,6 +169,17 @@
         "com.unity.render-pipelines.core": "12.1.14",
         "com.unity.searcher": "4.9.1"
       }
+    },
+    "com.unity.splines": {
+      "version": "2.2.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.settings-manager": "1.0.3",
+        "com.unity.mathematics": "1.2.1",
+        "com.unity.ugui": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
       "version": "1.1.33",
@@ -131,6 +220,15 @@
       "dependencies": {
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
+      }
+    },
+    "com.unity.visualeffectgraph": {
+      "version": "12.1.14",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.shadergraph": "12.1.14",
+        "com.unity.render-pipelines.core": "12.1.14"
       }
     },
     "com.unity.visualscripting": {
