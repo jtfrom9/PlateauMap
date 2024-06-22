@@ -13,6 +13,7 @@ using UniRx;
 using UniRx.Triggers;
 
 using InputObservable;
+using System;
 
 namespace Hedwig.Map3D
 {
@@ -23,6 +24,9 @@ namespace Hedwig.Map3D
 
         [SerializeField, Required]
         private CinemachineVirtualCamera vcam;
+
+        [SerializeField, Required]
+        private CinemachineFreeLook freeCam;
 
         [SerializeField]
         private Vector3 cameraOffset = Vector3.zero;
@@ -57,16 +61,19 @@ namespace Hedwig.Map3D
                 Debug.LogError("no agent");
                 return;
             }
-            SetupAgent(agent, vcam!);
-            SetupMouse(agent);
+            SetupAgent(agent, vcam!, freeCam!);
+            SetupMouse(agent, vcam!, freeCam!);
         }
 
-        void SetupAgent(NavMeshAgent agent, CinemachineVirtualCamera vcam)
+        void SetupAgent(NavMeshAgent agent, CinemachineVirtualCamera vcam, CinemachineFreeLook freeCam)
         {
-            vcam.transform.SetParent(agent.transform, worldPositionStays: false);
-            // vcam.transform.localPosition = Vector3.up * cameraHeight;
+            // vcam.transform.SetParent(agent.transform, worldPositionStays: false);
+            vcam.transform.localPosition = Vector3.up + cameraOffset;
             vcam.Follow = agent.transform;
             vcam.LookAt = agent.transform;
+            freeCam.Follow = agent.transform;
+            freeCam.LookAt = agent.transform;
+
             var transposer = vcam.GetCinemachineComponent<CinemachineTransposer>();
             if (transposer != null)
             {
@@ -77,7 +84,7 @@ namespace Hedwig.Map3D
             }
         }
 
-        void SetupMouse(NavMeshAgent agent)
+        void SetupMouse(NavMeshAgent agent, CinemachineVirtualCamera vcam,CinemachineFreeLook freeCam)
         {
             var context = this.DefaultInputContext();
             var lmb = context.GetObservable(0);
@@ -92,11 +99,32 @@ namespace Hedwig.Map3D
                 }
             }).AddTo(this);
 
+
             var mouse = new MouseInputContext(this, null);
             mouse.Wheel.Subscribe(e =>
             {
                 Debug.Log(e.wheel);
                 cameraOffset -= new Vector3(0, e.wheel, 0);
+
+                // freeCam.m_YAxis.Value -= e.wheel;
+                for (int i = 0; i < 3; i++)
+                {
+                    var radius = freeCam.m_Orbits[i].m_Radius;
+                    radius -= e.wheel;
+                    if (radius > 50) radius = 50;
+                    if (radius < 0.1f) radius = 0.1f;
+                    freeCam.m_Orbits[i].m_Radius = radius;
+                }
+            }).AddTo(this);
+
+            var hratio = 180f / Screen.width;
+            var vratio = -1f / Screen.height;
+            var rmb = context.GetObservable(1);
+            rmb.Difference().Subscribe(v =>
+            {
+                freeCam.m_XAxis.Value += hratio * v.x * 0.5f;
+                freeCam.m_YAxis.Value += vratio * v.y * 0.5f;
+
             }).AddTo(this);
         }
     }
