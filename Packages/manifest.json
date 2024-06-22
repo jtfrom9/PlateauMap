@@ -46,7 +46,8 @@
     "com.unity.modules.xr": "1.0.0",
     "com.cysharp.unitask": "2.5.4",
     "com.neuecc.unirx": "7.1.0",
-    "com.dbrizov.naughtyattributes": "2.1.4"
+    "com.dbrizov.naughtyattributes": "2.1.4",
+    "com.jtfrom9.input-observable": "0.1.3"
   },
   "scopedRegistries": [
     {
@@ -55,6 +56,7 @@
       "scopes": [
         "com.cysharp.unitask",
         "com.dbrizov.naughtyattributes",
+        "com.jtfrom9.input-observable",
         "com.neuecc.unirx"
       ]
     }
