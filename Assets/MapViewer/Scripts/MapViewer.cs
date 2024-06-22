@@ -14,6 +14,8 @@ using UniRx.Triggers;
 
 using InputObservable;
 using System;
+using UnityEngine.SceneManagement;
+using Cysharp.Threading.Tasks;
 
 namespace Hedwig.Map3D
 {
@@ -31,10 +33,17 @@ namespace Hedwig.Map3D
         [SerializeField]
         private Vector3 cameraOffset = Vector3.zero;
 
+        [SerializeField]
+        private string mapScene;
+
         private MapPoints placeMapPoints;
 
-        void Awake()
+        async void Awake()
         {
+            await SceneManager.LoadSceneAsync(mapScene, mode: LoadSceneMode.Additive).ToUniTask();
+
+            Debug.Log(string.Join(",", SceneUtility.Scenes.Select(s => s.name)));
+
             placeMapPoints = SceneUtility.Scenes.SelectMany(scene => scene.FindObectsTypeOf<MapPoints>(includeInactive: true))
                 .FirstOrDefault(ps => ps.Type == PointType.Place);
 

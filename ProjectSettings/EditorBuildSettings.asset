@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MapEditor/MapExporter.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/MapScenes/Shibuya2Map.unity
+    guid: 60c242852be63400287daab253b3628b
+  - enabled: 1
+    path: Assets/MapScenes/ShibuyaMap.unity
+    guid: ac29ca99410ff499780d0b591d94aa18
   m_configObjects: {}
