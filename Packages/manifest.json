@@ -1,11 +1,12 @@
 {
   "dependencies": {
     "com.synesthesias.plateau-unity-sdk": "https://github.com/Project-PLATEAU/PLATEAU-SDK-for-Unity.git#v2.3.2",
-    "com.unity.plateautoolkit": "https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity.git#v1.0.1",
+    "com.unity.cinemachine": "2.8.9",
     "com.unity.collab-proxy": "2.3.1",
     "com.unity.ide.rider": "3.0.28",
     "com.unity.ide.visualstudio": "2.0.22",
     "com.unity.ide.vscode": "1.2.5",
+    "com.unity.plateautoolkit": "https://github.com/Project-PLATEAU/PLATEAU-SDK-Toolkits-for-Unity.git#v1.0.1",
     "com.unity.render-pipelines.universal": "12.1.14",
     "com.unity.test-framework": "1.1.33",
     "com.unity.textmeshpro": "3.0.6",
@@ -42,6 +43,20 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
-  }
+    "com.unity.modules.xr": "1.0.0",
+    "com.cysharp.unitask": "2.5.4",
+    "com.neuecc.unirx": "7.1.0",
+    "com.dbrizov.naughtyattributes": "2.1.4"
+  },
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.cysharp.unitask",
+        "com.dbrizov.naughtyattributes",
+        "com.neuecc.unirx"
+      ]
+    }
+  ]
 }
