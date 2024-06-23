@@ -16,6 +16,7 @@ using InputObservable;
 using System;
 using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
+using System.Net.Sockets;
 
 namespace Hedwig.Map3D
 {
@@ -36,6 +37,9 @@ namespace Hedwig.Map3D
         [SerializeField]
         private string mapScene;
 
+        [SerializeField]
+        private Material material;
+
         private MapPoints placeMapPoints;
 
         async void Awake()
@@ -44,12 +48,25 @@ namespace Hedwig.Map3D
 
             Debug.Log(string.Join(",", SceneUtility.Scenes.Select(s => s.name)));
 
-            placeMapPoints = SceneUtility.Scenes.SelectMany(scene => scene.FindObectsTypeOf<MapPoints>(includeInactive: true))
-                .FirstOrDefault(ps => ps.Type == PointType.Place);
+            placeMapPoints = SceneUtility.Scenes.SelectMany(scene => scene.FindObjectsTypeOf<MapPoints>())
+                .FirstOrDefault(points => points.Type == PointType.Place);
 
             if (placeMapPoints == null)
             {
                 Debug.LogError("Not Found MapPonits(Place)");
+                return;
+            }
+
+            var mapdata = SceneUtility.Scenes.SelectMany(scene => scene.FindObjectsTypeOf<MapData>())
+                .FirstOrDefault();
+            if (mapdata != null)
+            {
+                var layer = LayerMask.NameToLayer("Obstacle");
+                foreach (var renderer in mapdata.FindRendererWithLayer(layer))
+                {
+                    Debug.Log($"{renderer.gameObject.name}");
+                    renderer.material = material;
+                }
             }
         }
 

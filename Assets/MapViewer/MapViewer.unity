@@ -1346,6 +1346,7 @@ MonoBehaviour:
   freeCam: {fileID: 349154044}
   cameraOffset: {x: 0, y: 20, z: -1}
   mapScene: Shibuya2Map
+  material: {fileID: 2100000, guid: ce213a7c11bdf4e798030d485b7f5167, type: 2}
 --- !u!4 &1836553849
 Transform:
   m_ObjectHideFlags: 0

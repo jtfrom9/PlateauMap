@@ -27,18 +27,16 @@ namespace Hedwig.Map3D
 
     public static class SceneExtension
     {
-        public static T[] FindObectsTypeOf<T>(this Scene scene, bool includeInactive)
+        public static IEnumerable<T> FindObjectsTypeOf<T>(this Scene scene) where T : Component
         {
-            var results = new List<T>();
             var gos = scene.GetRootGameObjects();
-            foreach(var go in gos)
+            foreach (var go in gos)
             {
-                if(go.TryGetComponent<T>(out var component))
+                if (go.TryGetComponent<T>(out var component))
                 {
-                    results.Add(component);
+                    yield return component;
                 }
             }
-            return results.ToArray();
         }
     }
 }
