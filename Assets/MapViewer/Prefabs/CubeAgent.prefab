@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6563879747320625631}
   - component: {fileID: 6563879747320625630}
   - component: {fileID: 6050940154802913000}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: CubeAgent
   m_TagString: Untagged
   m_Icon: {fileID: 0}

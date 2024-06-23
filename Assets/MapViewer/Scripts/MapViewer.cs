@@ -61,7 +61,7 @@ namespace Hedwig.Map3D
                 .FirstOrDefault();
             if (mapdata != null)
             {
-                var layer = LayerMask.NameToLayer("Obstacle");
+                var layer = LayerMask.NameToLayer("Obstacle0");
                 foreach (var renderer in mapdata.FindRendererWithLayer(layer))
                 {
                     Debug.Log($"{renderer.gameObject.name}");
